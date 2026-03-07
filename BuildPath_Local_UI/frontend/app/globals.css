@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-neon-cyan: #06edf9;
+    --color-neon-purple: #a855f7;
+    --color-neon-green: #0bda50;
+    --color-dark-950: #0A0C10;
+    --color-dark-800: #1e252e;
+  }
+
+  html,
+  body {
+    background-color: #0A0C10;
+    color: #f1f5f9;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+@layer components {
+  .glass-card {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bg-glitch {
+    background: radial-gradient(circle at 50% 50%, #161b22 0%, #0A0C10 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glitch-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #06edf9;
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+
+  .quest-line-gradient {
+    background: linear-gradient(to bottom, #0bda50 0%, #06edf9 50%, #a855f7 100%);
+    box-shadow: 0 0 15px rgba(6, 237, 249, 0.3);
+  }
+
+  .pulse-cyan {
+    box-shadow: 0 0 0 0 rgba(6, 237, 249, 0.7);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(6, 237, 249, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(6, 237, 249, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(6, 237, 249, 0); }
+  }
+
+  .neon-glow-cyan {
+    text-shadow: 0 0 10px rgba(6, 237, 249, 0.8), 0 0 20px rgba(6, 237, 249, 0.4);
+  }
+
+  .neon-border-glow-cyan {
+    box-shadow: 0 0 15px rgba(6, 237, 249, 0.3);
+  }
+
+  .neon-border-glow-green {
+    box-shadow: 0 0 15px rgba(11, 218, 80, 0.4);
+  }
+
+  .neon-glow-purple {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.6), 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+
+  .neon-border-cyan {
+    box-shadow: 0 0 15px rgba(6, 237, 249, 0.3);
+    border-color: #06edf9;
+  }
+
+  .nebula-bg {
+    background: radial-gradient(circle at 20% 30%, rgba(6, 237, 249, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(6, 237, 249, 0.1) 0%, transparent 40%);
+  }
+
+  .bg-radial-glow {
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, rgba(6, 237, 249, 0.1) 40%, transparent 70%);
+  }
+}
+
+
+  .task-burst-placeholder {
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.2) 0%, transparent 70%);
+  }
+
+  /* ─── Status badges ─── */
+  .badge-locked {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
+           bg-white/5 text-slate-400 border border-white/10;
+  }
+
+  .badge-unlocked {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
+           bg-[#00F5FF]/10 text-[#00F5FF] border border-[#00F5FF]/30;
+  }
+
+  .badge-completed {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
+           bg-[#30D158]/10 text-[#30D158] border border-[#30D158]/30;
+  }
+
+  /* ─── Loading skeleton ─── */
+  .skeleton {
+    @apply rounded-lg bg-gradient-to-r from-[#16161F] via-[#1E1E2E] to-[#16161F]
+           bg-[length:200%_100%] animate-[shimmer_2s_linear_infinite];
+  }
+
+  /* ─── Form fields ─── */
+  .field {
+    @apply w-full px-4 py-3 rounded-xl bg-[#1E1E2E] border border-white/10 text-white placeholder-slate-500
+           focus:outline-none focus:border-[#00F5FF]/60 focus:ring-1 focus:ring-[#00F5FF]/40
+           transition-colors duration-200;
+  }
+
+  /* ─── Neon glow text ─── */
+  .text-neon {
+    @apply text-[#00F5FF] drop-shadow-[0_0_8px_rgba(0,245,255,0.6)];
+  }
+
+  .text-neon-purple {
+    @apply text-[#BF5AF2] drop-shadow-[0_0_8px_rgba(191,90,242,0.6)];
+  }
+
+  .text-neon-green {
+    @apply text-[#30D158] drop-shadow-[0_0_8px_rgba(48,209,88,0.5)];
+  }
+
+  /* ─── Progress bar ─── */
+  .progress-bar-track {
+    @apply h-2 w-full rounded-full bg-white/10 overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-[#00F5FF] to-[#BF5AF2]
+           transition-all duration-500 ease-out;
+  }
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuildPath Dashboard Vertical Questline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06edf9",
+                        "success-neon": "#0bda50",
+                        "future-neon": "#a855f7",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0A0C10",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .bg-glitch {
+            background: radial-gradient(circle at 50% 50%, #161b22 0%, #0A0C10 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .glitch-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #06edf9;
+            opacity: 0.3;
+            filter: blur(1px);
+        }
+        .quest-line-gradient {
+            background: linear-gradient(to bottom, #0bda50 0%, #06edf9 50%, #a855f7 100%);
+            box-shadow: 0 0 15px rgba(6, 237, 249, 0.3);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pulse-cyan {
+            box-shadow: 0 0 0 0 rgba(6, 237, 249, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(6, 237, 249, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(6, 237, 249, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(6, 237, 249, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<div class="relative flex h-screen w-full flex-col overflow-hidden bg-glitch">
+<!-- Glitch Particles Background -->
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="glitch-particle top-10 left-1/4 scale-150"></div>
+<div class="glitch-particle top-1/3 right-1/4"></div>
+<div class="glitch-particle bottom-1/4 left-10 scale-125"></div>
+<div class="glitch-particle top-1/2 right-10"></div>
+<div class="glitch-particle bottom-10 left-1/2 opacity-50"></div>
+</div>
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 glass-card px-4 py-3 flex items-center justify-between border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="relative size-12 flex items-center justify-center">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#21484a" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#06edf9" stroke-dasharray="34, 100" stroke-width="3"></path>
+</svg>
+<span class="absolute text-[10px] font-bold text-primary">34%</span>
+</div>
+<div>
+<h1 class="text-sm font-bold uppercase tracking-widest text-white/90">BuildPath</h1>
+<p class="text-[10px] text-slate-400 font-medium">VENTURE_01 DASHBOARD</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-orange-500 text-sm">local_fire_department</span>
+<span class="text-sm font-bold text-white">7 DAYS</span>
+</div>
+<span class="bg-primary/10 text-primary text-[9px] px-2 py-0.5 rounded-full font-bold border border-primary/20">ACTIVE</span>
+</div>
+<div class="size-10 rounded-lg overflow-hidden border border-white/10">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Cyberpunk style user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0vcV3xS88q9T-Jmgnxzo4ohpJbbQlQwIgx7bnguE9EvHGAXAuEdmacVEsueXcHMoSD8HPiz0qzQ0auWcJksyLeLQkiocqwm2XptQJTDNiD6EGeUAvMBxDzPfcGOrpqW5Ik9gK4JjuM7jZzYTJMs_hqr8gisvqH_AOfuBaFd3UwQdpvgpYfVPDSYqwDoh-HyYue8rTbis-EsgyEUggRMYyF8ZJHg_uBXQrN8kDqmbnJDvno5D3FJh3DCMlTJ9eCE-PxZIwJgWTRCM"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<nav class="w-16 flex flex-col items-center py-6 gap-8 glass-card border-r border-white/10">
+<a class="text-primary group relative" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<div class="absolute left-full ml-2 px-2 py-1 bg-primary text-black text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity">STAGES</div>
+</a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+</a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">hub</span>
+</a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+</a>
+<div class="mt-auto">
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area: Vertical Questline -->
+<main class="flex-1 overflow-y-auto px-6 py-10 relative scroll-smooth">
+<div class="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 quest-line-gradient opacity-40"></div>
+<div class="flex flex-col gap-24 relative z-10 max-w-md mx-auto">
+<!-- Past Milestone -->
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-success-neon flex items-center justify-center shadow-[0_0_15px_#0bda50]">
+<span class="material-symbols-outlined text-black text-sm font-bold">check</span>
+</div>
+<div class="glass-card mt-4 p-4 rounded-xl w-full border-l-4 border-l-success-neon">
+<span class="text-[10px] text-success-neon font-bold uppercase tracking-wider">Completed</span>
+<h3 class="text-white font-bold text-lg">Business Registration</h3>
+<p class="text-slate-400 text-xs mt-1">Legal entity and tax documentation finalized.</p>
+</div>
+</div>
+<!-- Past Milestone -->
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-success-neon flex items-center justify-center shadow-[0_0_15px_#0bda50]">
+<span class="material-symbols-outlined text-black text-sm font-bold">check</span>
+</div>
+<div class="glass-card mt-4 p-4 rounded-xl w-full border-l-4 border-l-success-neon">
+<span class="text-[10px] text-success-neon font-bold uppercase tracking-wider">Completed</span>
+<h3 class="text-white font-bold text-lg">Brand Identity</h3>
+<p class="text-slate-400 text-xs mt-1">Visual language, logo, and design system.</p>
+</div>
+</div>
+<!-- Current Milestone -->
+<div class="flex flex-col items-center">
+<div class="size-16 rounded-full border-2 border-primary pulse-cyan flex items-center justify-center bg-background-dark">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">code</span>
+</div>
+</div>
+<div class="glass-card mt-6 p-6 rounded-xl w-full border-t-2 border-t-primary relative overflow-hidden">
+<div class="absolute -right-4 -top-4 size-24 bg-primary/5 rounded-full blur-2xl"></div>
+<span class="text-[10px] text-primary font-bold uppercase tracking-wider">Current Quest</span>
+<h3 class="text-white font-bold text-xl mt-1">MVP Development</h3>
+<p class="text-slate-300 text-sm mt-2 mb-6">Build the core features of your product to validate your market thesis.</p>
+<button class="w-full py-3 px-4 bg-primary text-black font-bold rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(6,237,249,0.3)]">
+                                JUMP IN
+                                <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Future Milestone -->
+<div class="flex flex-col items-center opacity-60">
+<div class="size-8 rounded-full border-2 border-future-neon flex items-center justify-center bg-background-dark/50">
+<span class="material-symbols-outlined text-future-neon text-sm">lock</span>
+</div>
+<div class="glass-card mt-4 p-4 rounded-xl w-full border-dashed border-white/20">
+<span class="text-[10px] text-future-neon font-bold uppercase tracking-wider">Locked Stage</span>
+<h3 class="text-slate-400 font-bold text-lg">Market Launch</h3>
+<p class="text-slate-500 text-xs mt-1">Go-to-market strategy and initial user acquisition.</p>
+</div>
+</div>
+<!-- Future Milestone -->
+<div class="flex flex-col items-center opacity-40 mb-10">
+<div class="size-8 rounded-full border border-white/20 flex items-center justify-center bg-background-dark/50">
+<span class="material-symbols-outlined text-slate-600 text-sm">lock</span>
+</div>
+<div class="glass-card mt-4 p-4 rounded-xl w-full border-dashed border-white/10">
+<span class="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Phase 5</span>
+<h3 class="text-slate-600 font-bold text-lg">Scale Phase</h3>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation (Mobile Style) -->
+<div class="flex gap-2 border-t border-white/10 bg-background-dark/80 backdrop-blur-lg px-4 pb-6 pt-2 z-50">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">map</span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-widest uppercase">Quest</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-widest uppercase">Vault</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">group</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-widest uppercase">Network</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">equalizer</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-widest uppercase">Intel</p>
+</a>
+</div>
+</div>
+</body></html>

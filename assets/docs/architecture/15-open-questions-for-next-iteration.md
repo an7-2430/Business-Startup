@@ -1,0 +1,5 @@
+# 15. Open Questions (for next iteration)
+- Final roadmap content for Cabinet Manufacturing NSW (steps list and prerequisites)
+- Plan tiers and gating rules (what is free vs premium)
+- Document types required per step (PDF, images, IDs, forms)
+- Admin publishing workflow (immediate publish vs draft/publish states)
