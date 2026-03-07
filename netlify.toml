@@ -1,5 +1,5 @@
 [build]
-  base = "analytic-web"
+  base = "BuildPath_Local_UI/frontend"
   command = "npm run build"
   publish = ".next"
 
