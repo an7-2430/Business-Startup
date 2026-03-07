@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuildPath Admin: Industries Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06edf9",
+                        "accent-purple": "#a855f7",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0A0C10",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-purple {
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6), 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+        .neon-border-cyan {
+            box-shadow: 0 0 15px rgba(6, 237, 249, 0.3);
+            border-color: #06edf9;
+        }
+        .sidebar-item-active {
+            color: #06edf9;
+            background: rgba(6, 237, 249, 0.1);
+            border-right: 3px solid #06edf9;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(6, 237, 249, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen overflow-hidden flex flex-col">
+<!-- Header Section -->
+<header class="flex items-center justify-between px-6 py-4 border-b border-white/10 glass sticky top-0 z-40">
+<div class="flex flex-col">
+<h1 class="text-xl font-bold tracking-tight text-accent-purple neon-glow-purple">
+                BuildPath Admin
+            </h1>
+<span class="text-[10px] uppercase tracking-widest text-slate-400 font-medium">
+                Last updated: 2 mins ago
+            </span>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 group">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">history</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center overflow-hidden">
+<img alt="Admin Avatar" data-alt="Cyberpunk style user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbVLYhqelaMyDAnvPV1rf7tMYwGSMMTqKJpEMs43d8S7gaBoA11mwQfedRbj1fE55EE1UVKf7c50r4AFwBjHuL91ezgWIuGrKuDT_wskaWDs39krHASUb8p4cDVaRyX4DppRh32WesHd0p-cg8YvoSD0IV9q3YOZHCVkGLzVyRpwc-c0qIWIJs35hetWdtMeOItNw0R19fRXU1HBKpgPUSUoAwMTG80apaqcPHWCI3qeOuRHTzGUCRN-EHFBFNRhpWcCNH9OBv1vs"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- Sidebar Navigation (Condensed for Mobile context) -->
+<nav class="w-16 flex flex-col items-center py-6 border-r border-white/5 glass hidden sm:flex">
+<div class="flex flex-col gap-8">
+<a class="sidebar-item-active p-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">factory</span>
+</a>
+<a class="text-slate-500 hover:text-primary p-2 transition-all" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+</a>
+<a class="text-slate-500 hover:text-primary p-2 transition-all" href="#">
+<span class="material-symbols-outlined">format_list_numbered</span>
+</a>
+<a class="text-slate-500 hover:text-primary p-2 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+</a>
+<a class="text-slate-500 hover:text-primary p-2 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-4 sm:p-6 pb-24">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-2xl font-bold text-white">Industries</h2>
+<p class="text-sm text-slate-400">Manage business categories and workflows</p>
+</div>
+<button class="bg-primary hover:bg-primary/80 text-background-dark font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New
+                </button>
+</div>
+<!-- Data Table Container -->
+<div class="flex flex-col gap-3">
+<!-- Table Row 1 -->
+<div class="glass p-4 rounded-xl flex items-center justify-between group hover:neon-border-cyan transition-all duration-300">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<div>
+<h3 class="font-bold text-white leading-tight">SaaS &amp; Tech</h3>
+<p class="text-xs text-slate-400">12 Stages • 45 Steps</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:block px-2 py-1 rounded bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-wider">Active</span>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+<!-- Table Row 2 (Active/Clicked State Simulation) -->
+<div class="p-4 rounded-xl flex items-center justify-between transition-all duration-300 neon-border-cyan bg-primary/5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/40 shadow-[0_0_10px_rgba(6,237,249,0.2)]">
+<span class="material-symbols-outlined text-primary">storefront</span>
+</div>
+<div>
+<h3 class="font-bold text-white leading-tight">E-commerce</h3>
+<p class="text-xs text-slate-400">8 Stages • 32 Steps</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:block px-2 py-1 rounded bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-wider">Active</span>
+<button class="bg-primary text-background-dark p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+<!-- Table Row 3 -->
+<div class="glass p-4 rounded-xl flex items-center justify-between group hover:neon-border-cyan transition-all duration-300">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-slate-400">restaurant</span>
+</div>
+<div>
+<h3 class="font-bold text-white leading-tight">Food &amp; Bev</h3>
+<p class="text-xs text-slate-400">15 Stages • 58 Steps</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:block px-2 py-1 rounded bg-slate-500/10 text-slate-400 text-[10px] font-bold uppercase tracking-wider">Draft</span>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+<!-- Table Row 4 -->
+<div class="glass p-4 rounded-xl flex items-center justify-between group hover:neon-border-cyan transition-all duration-300">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-slate-400">fitness_center</span>
+</div>
+<div>
+<h3 class="font-bold text-white leading-tight">Fitness &amp; Health</h3>
+<p class="text-xs text-slate-400">10 Stages • 38 Steps</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:block px-2 py-1 rounded bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-wider">Active</span>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Drawer (Edit Mode) -->
+<div class="absolute inset-y-0 right-0 w-[90%] sm:w-[400px] glass shadow-2xl z-50 border-l border-white/10 flex flex-col translate-x-0 transition-transform duration-500 ease-in-out">
+<div class="p-6 border-b border-white/10 flex items-center justify-between">
+<h2 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                    Edit Industry
+                </h2>
+<button class="text-slate-400 hover:text-white p-1">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Form Group -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-primary font-bold">Industry Name</label>
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary transition-all" type="text" value="E-commerce"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-primary font-bold">Icon Identifier</label>
+<div class="flex gap-2">
+<div class="w-12 h-12 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">storefront</span>
+</div>
+<input class="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary transition-all" type="text" value="material_storefront"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-primary font-bold">Description</label>
+<textarea class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-primary focus:border-primary transition-all text-sm leading-relaxed" rows="4">Framework for building online retail businesses including logistics, payment processing, and inventory management steps.</textarea>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
+<div>
+<p class="font-bold text-white text-sm">Visible to Users</p>
+<p class="text-xs text-slate-400">Show this industry in the setup guide</p>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary">
+<span class="inline-block h-4 w-4 translate-x-6 rounded-full bg-white transition"></span>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] uppercase tracking-widest text-primary font-bold">Quick Actions</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-3 glass rounded-lg hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400">add_task</span>
+<span class="text-[10px] font-medium text-slate-300">Add Stage</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-3 glass rounded-lg hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400">analytics</span>
+<span class="text-[10px] font-medium text-slate-300">Stats</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-white/10 glass bg-black/20 grid grid-cols-2 gap-4">
+<button class="py-3 px-4 border border-white/10 rounded-lg text-slate-300 font-bold hover:bg-white/5 transition-all">
+                    Cancel
+                </button>
+<button class="py-3 px-4 bg-primary text-background-dark rounded-lg font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+                    Save Changes
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav (Mobile Only) -->
+<div class="sm:hidden fixed bottom-0 left-0 right-0 glass border-t border-white/10 px-4 pb-6 pt-2 z-40 flex justify-between">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="text-[10px] font-bold tracking-tight">Industries</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="text-[10px] font-bold tracking-tight">Stages</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">format_list_numbered</span>
+<span class="text-[10px] font-bold tracking-tight">Steps</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold tracking-tight">Users</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold tracking-tight">Settings</span>
+</a>
+</div>
+</body></html>

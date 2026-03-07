@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuildPath Tech-Node Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06edf9",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0a0c10",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .tech-grid {
+            background-image: 
+                linear-gradient(to right, rgba(6, 237, 249, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(6, 237, 249, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .nebula-glow {
+            background: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(6, 237, 249, 0.1) 0%, transparent 50%);
+        }
+        .glass-panel {
+            background: rgba(15, 34, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(6, 237, 249, 0.1);
+        }
+        .node-pulse {
+            box-shadow: 0 0 15px rgba(6, 237, 249, 0.5);
+        }
+        .line-glow {
+            filter: drop-shadow(0 0 2px #06edf9);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen overflow-hidden flex flex-col">
+<!-- Top Header HUD -->
+<header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-primary/20 px-4 pt-6 pb-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="relative flex items-center justify-center size-12">
+<svg class="size-full transform -rotate-90">
+<circle class="text-primary/10" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="82.9" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold">34%</span>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-tight uppercase text-primary/80">Overall Progress</h1>
+<p class="text-xs text-slate-400">Phase 1: Foundation</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1">
+<span class="material-symbols-outlined text-primary text-sm mr-1">local_fire_department</span>
+<span class="text-xs font-bold">7 DAYS</span>
+</div>
+<button class="size-8 flex items-center justify-center rounded-lg bg-slate-800/50 border border-slate-700">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</button>
+</div>
+</div>
+<!-- Badge Shelf -->
+<div class="flex gap-4 overflow-x-auto pb-1 no-scrollbar">
+<div class="flex flex-col items-center min-w-[50px]">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/40 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">rocket_launch</span>
+</div>
+<span class="text-[9px] uppercase tracking-tighter opacity-60">Starter</span>
+</div>
+<div class="flex flex-col items-center min-w-[50px]">
+<div class="size-10 rounded-full bg-purple-500/20 flex items-center justify-center border border-purple-500/40 mb-1">
+<span class="material-symbols-outlined text-purple-400 text-xl">gavel</span>
+</div>
+<span class="text-[9px] uppercase tracking-tighter opacity-60">Legal</span>
+</div>
+<div class="flex flex-col items-center min-w-[50px]">
+<div class="size-10 rounded-full bg-slate-700/50 flex items-center justify-center border border-slate-600 mb-1 opacity-40">
+<span class="material-symbols-outlined text-slate-400 text-xl">account_balance</span>
+</div>
+<span class="text-[9px] uppercase tracking-tighter opacity-60">Banker</span>
+</div>
+<div class="flex flex-col items-center min-w-[50px]">
+<div class="size-10 rounded-full bg-slate-700/50 flex items-center justify-center border border-slate-600 mb-1 opacity-40">
+<span class="material-symbols-outlined text-slate-400 text-xl">shield_person</span>
+</div>
+<span class="text-[9px] uppercase tracking-tighter opacity-60">Officer</span>
+</div>
+</div>
+</header>
+<!-- Main Tech-Node Map Area -->
+<main class="flex-1 relative tech-grid nebula-glow overflow-hidden">
+<!-- SVG Connecting Lines -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
+<defs>
+<filter id="glow">
+<fegaussianblur result="coloredBlur" stddeviation="1.5"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Line 1 to 2 (Completed) -->
+<path class="opacity-60" d="M 187 480 L 187 380" fill="none" stroke="#4ade80" stroke-width="2"></path>
+<!-- Line 2 to 3 (Active) -->
+<path class="line-glow" d="M 187 300 L 120 220" fill="none" stroke="#06edf9" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Line 2 to 4 (Locked) -->
+<path class="opacity-30" d="M 187 300 L 254 220" fill="none" stroke="#a855f7" stroke-width="1"></path>
+</svg>
+<!-- Nodes Container -->
+<div class="relative w-full h-full flex flex-col items-center justify-center p-4 pt-48 pb-24 space-y-24 overflow-y-auto no-scrollbar">
+<!-- Node: Locked (Legal Eagle) -->
+<div class="relative flex flex-col items-center translate-x-16 -mb-12">
+<div class="size-16 rounded-xl border-2 border-purple-500/30 bg-purple-900/10 flex items-center justify-center backdrop-blur-sm grayscale opacity-60">
+<span class="material-symbols-outlined text-purple-400/50">lock</span>
+</div>
+<p class="mt-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Legal Eagle</p>
+</div>
+<!-- Node: Unlocked/Active (Compliance) -->
+<div class="relative flex flex-col items-center -translate-x-16">
+<div class="absolute -inset-4 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
+<div class="size-20 rounded-xl border-2 border-primary bg-primary/20 flex items-center justify-center backdrop-blur-md node-pulse z-10">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+</div>
+<div class="z-10 bg-primary px-2 py-0.5 rounded-full mt-3">
+<p class="text-[9px] font-black text-background-dark uppercase">Current Task</p>
+</div>
+<p class="mt-1 text-xs font-bold text-primary uppercase tracking-widest">Tax Compliance</p>
+</div>
+<!-- Node: Completed (Entity Formation) -->
+<div class="relative flex flex-col items-center">
+<div class="size-20 rounded-xl border-2 border-green-400 bg-green-400/10 flex items-center justify-center backdrop-blur-md z-10">
+<span class="material-symbols-outlined text-green-400 text-3xl">check_circle</span>
+</div>
+<p class="mt-2 text-xs font-bold text-green-400 uppercase tracking-widest">Entity Formation</p>
+</div>
+<div class="h-24"></div> <!-- Spacer for scrolling -->
+</div>
+<!-- Glassmorphic Sidebar (Floating Drawer) -->
+<aside class="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-30">
+<div class="glass-panel p-2 rounded-xl flex flex-col gap-4">
+<button class="size-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center border border-primary/40">
+<span class="material-symbols-outlined">account_tree</span>
+</button>
+<button class="size-10 rounded-lg text-slate-400 flex items-center justify-center hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">gavel</span>
+</button>
+<button class="size-10 rounded-lg text-slate-400 flex items-center justify-center hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="size-10 rounded-lg text-slate-400 flex items-center justify-center hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</div>
+</aside>
+<!-- Current Task Floating Card -->
+<div class="absolute bottom-24 left-4 right-4 z-30">
+<div class="glass-panel rounded-xl p-4 border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-[10px] text-primary font-bold uppercase tracking-wider">Active Stage</span>
+<h3 class="text-lg font-bold">Federal EIN Setup</h3>
+</div>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded">15 MIN</span>
+</div>
+<p class="text-xs text-slate-400 mb-4 leading-relaxed">Required for opening a business bank account and hiring employees.</p>
+<button class="w-full bg-primary text-background-dark font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+<span>LAUNCH TASK</span>
+<span class="material-symbols-outlined text-sm">bolt</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="relative z-50 glass-panel border-t border-primary/10 flex items-center justify-around px-4 pb-8 pt-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Tasks</span>
+</a>
+<div class="relative -top-4">
+<div class="size-14 rounded-full bg-primary flex items-center justify-center shadow-[0_0_20px_rgba(6,237,249,0.4)] border-4 border-background-dark">
+<span class="material-symbols-outlined text-background-dark font-bold">add</span>
+</div>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Profile</span>
+</a>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-20">
+<div class="absolute top-1/4 left-1/4 size-96 bg-primary/30 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 right-1/4 size-96 bg-purple-500/20 rounded-full blur-[120px]"></div>
+</div>
+</body></html>
