@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAuth } from '@/lib/useAuth';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
 
@@ -67,7 +67,7 @@ function OptionCard({ label, selected, onClick, icon, sublabel }) {
 
 // ── Main wizard ──────────────────────────────────────────────────────────────
 export default function OnboardingPage() {
-  const { user, isLoading: authLoading } = useUser();
+  const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();
 
   const [step, setStep] = useState(1);

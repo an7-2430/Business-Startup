@@ -1,11 +1,11 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAuth } from '@/lib/useAuth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function LoginPage() {
-  const { user, isLoading } = useUser();
+  const { user, isLoading } = useAuth();
   const router = useRouter();
 
   // If already logged in, redirect to dashboard

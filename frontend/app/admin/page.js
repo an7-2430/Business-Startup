@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAuth } from '@/lib/useAuth';
 import Link from 'next/link';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
 
 export default function AdminDashboard() {
-  const { user, isLoading: authLoading } = useUser();
+  const { user, isLoading: authLoading } = useAuth();
   const [tab, setTab] = useState('industries');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

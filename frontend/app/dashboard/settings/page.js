@@ -1,9 +1,9 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAuth } from '@/lib/useAuth';
 
 export default function SettingsPage() {
-  const { user } = useUser();
+  const { user } = useAuth();
 
   return (
     <div className="space-y-8 max-w-3xl mx-auto">

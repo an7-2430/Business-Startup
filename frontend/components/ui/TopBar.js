@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAuth } from '@/lib/useAuth';
 import { usePathname } from 'next/navigation';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
 
 export default function TopBar() {
-  const { user } = useUser();
+  const { user } = useAuth();
   const pathname = usePathname();
   const [sessionData, setSessionData] = useState({
     industry: 'Business Setup',

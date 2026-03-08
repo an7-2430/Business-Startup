@@ -1,12 +1,12 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAuth } from '@/lib/useAuth';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SIDEBAR_NAV } from '@/lib/constants';
 
 export default function Sidebar() {
-  const { user } = useUser();
+  const { user } = useAuth();
   const pathname = usePathname();
 
   return (
