@@ -1,0 +1,23 @@
+# Render configuration
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: buildpath-frontend
+    runtime: node
+    rootDir: frontend
+    buildCommand: rm -rf .next && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: buildpath-api
+    runtime: node
+    rootDir: api
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
