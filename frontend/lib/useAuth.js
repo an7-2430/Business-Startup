@@ -1,23 +1,11 @@
 'use client';
 
-import { UserContext } from '@auth0/nextjs-auth0/client';
-import { useContext } from 'react';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 /**
- * Safe wrapper around Auth0's useUser hook that handles SSR gracefully.
- * Returns a default state when UserProvider context is not available.
+ * Wrapper around Auth0's useUser hook.
+ * Simply re-exports the hook for consistency.
  */
 export function useAuth() {
-  const context = useContext(UserContext);
-  
-  // If no context (during SSR/static generation), return default state
-  if (!context) {
-    return {
-      user: undefined,
-      error: undefined,
-      isLoading: true,
-    };
-  }
-
-  return context;
+  return useUser();
 }
